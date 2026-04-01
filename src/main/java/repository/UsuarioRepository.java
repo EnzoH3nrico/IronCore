@@ -2,7 +2,9 @@ package repository;
 
 import model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
-public interface AutenticacaoRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    UserDetails findByLogin(String login);
 }

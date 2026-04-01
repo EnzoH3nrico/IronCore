@@ -1,4 +1,4 @@
-package dto;
+package dto.usuario;
 
-public record DadosAutenticacao() {
+public record DadosAutenticacao(String login, String senha) {
 }
