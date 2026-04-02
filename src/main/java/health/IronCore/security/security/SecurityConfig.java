@@ -1,4 +1,4 @@
-package security;
+package health.IronCore.security.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     @Autowired
-    private SecurityFilter segurancaFiltro;
+    private SegurancaFiltro segurancaFiltro;
 
     @Bean
     public SecurityFilterChain seguranca(HttpSecurity http){
@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .sessionManagement(sm ->
                         sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/login").permitAll();
+                    req.requestMatchers("/ironCore/login").permitAll();
                     req.anyRequest().authenticated();
                 }).addFilterBefore(segurancaFiltro, UsernamePasswordAuthenticationFilter.class)
                 .build();

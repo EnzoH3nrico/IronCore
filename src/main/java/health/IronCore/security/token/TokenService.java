@@ -1,11 +1,11 @@
-package security.token;
+package health.IronCore.security.token;
 
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import model.Usuario;
+import health.IronCore.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.time.Instant;
@@ -25,7 +25,7 @@ public class TokenService {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("API academia")
-                    .withSubject(usuario.getNome())
+                    .withSubject(usuario.getLogin())
                     .withClaim("id", usuario.getId())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
